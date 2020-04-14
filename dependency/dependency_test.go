@@ -15,12 +15,8 @@ import (
 func TestDependency(t *testing.T) {
 
 	// Map out all the tests we intend to run
-	tests := make(map[string]func(*testing.T))
-	tests["Dependency.Print accepts nil"]		= testDependencyPrintAcceptsNil
-	tests["Dependency.Print updates WaitGroup"]	= testDependencyPrintUpdatesWaitGroup
-	for name, test := range tests {
-		t.Run(name, test)
-	}
+	t.Run("Dependency.Print accepts nil",		testDependencyPrintAcceptsNil)
+	t.Run("Dependency.Print updates WaitGroup",	testDependencyPrintUpdatesWaitGroup)
 }
 
 // This will be used to determine wheather dependency.Print calls WaitGroup.Done exactly once
