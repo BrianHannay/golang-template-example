@@ -24,13 +24,13 @@ func TestDependency(t *testing.T) {
 }
 
 // This will be used to determine wheather dependency.Print calls WaitGroup.Done exactly once
-type WaitGroupSpy struct {
+type WaitGroupMock struct {
 	sync.WaitGroup
 	DoneCalls	int
 }
 
 // Implement the functions we'll be spying on
-func (spy *WaitGroupSpy) Done() {
+func (spy *WaitGroupMock) Done() {
 	spy.DoneCalls++
 }
 
@@ -41,7 +41,7 @@ func testDependencyPrintAcceptsNil(t *testing.T) {
 
 // Test that Dependency.Print calls Done exactly once
 func testDependencyPrintUpdatesWaitGroup(t *testing.T) {
-	g := WaitGroupSpy{}
+	g := WaitGroupMock{}
 	dependency.Print("test message", &g)
 	if g.DoneCalls != 1 {
 		t.Errorf("Failed to update waitgroup - Done() called %d times", g.DoneCalls)
