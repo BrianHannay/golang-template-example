@@ -1,13 +1,17 @@
-run: clean test main
+run: clean test format main
 	./main
-
-
-clean:
-	rm -f main
-
-test:
-	go test ./... -v
 
 main: main.go
 	go build main.go
 	chmod +x main
+
+format:
+	find . -type f -name '*.go' -exec gofmt -w -e -s -d {} \;
+
+test:
+	go test ./... -v
+
+clean:
+	rm -f main
+
+.PHONY: run clean test format

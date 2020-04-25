@@ -7,22 +7,22 @@ import "."
 
 // We'll also need the testing package, for, you know... testing.
 import (
-	"testing"
 	"sync"
+	"testing"
 )
 
 // Here's an example of testing a package using many subtests:
 func TestDependency(t *testing.T) {
 
 	// Map out all the tests we intend to run
-	t.Run("Dependency.Print accepts nil",		testDependencyPrintAcceptsNil)
-	t.Run("Dependency.Print updates WaitGroup",	testDependencyPrintUpdatesWaitGroup)
+	t.Run("Dependency.Print accepts nil", testDependencyPrintAcceptsNil)
+	t.Run("Dependency.Print updates WaitGroup", testDependencyPrintUpdatesWaitGroup)
 }
 
 // This will be used to determine wheather dependency.Print calls WaitGroup.Done exactly once
 type WaitGroupMock struct {
 	sync.WaitGroup
-	DoneCalls	int
+	DoneCalls int
 }
 
 // Implement the functions we'll be spying on

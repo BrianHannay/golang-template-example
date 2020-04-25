@@ -15,7 +15,6 @@ import (
 // Demonstrating a template dependency requires importing it first
 import "./dependency"
 
-
 // the main function is the entrypoint to the compiled go program
 func main() {
 
@@ -53,7 +52,7 @@ func goroutineExample() {
 func deferredExample() {
 
 	// Produce 5 deferred Print calls
-	for i:= 5; i <= 10; i++ {
+	for i := 5; i <= 10; i++ {
 		defer dependency.Print(
 			fmt.Sprintf(
 				"Hello World (Deferred Thread %d)!",
