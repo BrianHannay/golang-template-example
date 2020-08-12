@@ -1,7 +1,10 @@
-run: clean test format main
+run: clean test format plugins main
 	./main
 
-main: main.go
+plugins:
+	go build -o plugins -buildmode=plugin plugins/*
+
+main: plugins main.go
 	go build main.go
 	chmod +x main
 
@@ -14,4 +17,4 @@ test:
 clean:
 	rm -f main
 
-.PHONY: run clean test format
+.PHONY: run clean test format plugins
