@@ -6,3 +6,4 @@ This minimal example project is meant to be used as a template by beginner golan
 * a single dependency, with tests
 * demonstration of go routines
 * demonstration of deferred functions
+* demonstration of building and using Plugins
