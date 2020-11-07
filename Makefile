@@ -2,7 +2,7 @@ run: clean test format plugins main
 	./main
 
 plugins:
-	go build -o plugins -buildmode=plugin plugins/*
+	cd plugins && go build -buildmode=plugin ../plugins_src/*
 
 main: plugins main.go
 	go build main.go
